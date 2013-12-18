@@ -1,4 +1,4 @@
-* Install script *
+*Install script*
     
     $> bash install/install.sh
 
