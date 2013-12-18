@@ -1,8 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_cnt =7
 let g:netrw_dirhist_1='/etc/apache2/sites-enabled'
 let g:netrw_dirhist_2='/home/ot32em/Dropbox/Dev/php_websites/roy3/protected/models'
 let g:netrw_dirhist_3='/home/ot32em/github/Roystonea/etc'
 let g:netrw_dirhist_4='/usr/share/doc/ifupdown/examples'
 let g:netrw_dirhist_5='/root/env/.git'
 let g:netrw_dirhist_6='/root/env/.git/logs'
+let g:netrw_dirhist_7='/home/ot_chen/.oldrc'
