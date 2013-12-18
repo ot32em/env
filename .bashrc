@@ -21,7 +21,7 @@ shopt -s checkwinsize
 #shopt -s globstar
 
 # make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+#[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 # set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
@@ -85,6 +85,7 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 
+# Following scripts are needed and edited for OT Chen myself
 export TERM="xterm-256color"
 
 #export VIRSH_DEFAULT_CONNECT_URI="xen:///"
@@ -93,4 +94,11 @@ alias vi=vim
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+# color control syntax "\e[XXXXXm" which XXXXX means color codes seperated by ";"
+if [ "$(id -u)" != 0 ]; then
+    PS1="\[\e[1;34m\]\u\[\e[m\]@\[\e[32m\H\e[m\] [\[\e[1m\]\W\[\e[m\]]\$ "
+else
+    PS1="\[\e[1;34m\]\u\[\e[m\]@\[\e[32m\H\e[m\] [\[\e[1m\]\W\[\e[m\]]\$ "
+fi
+
 
