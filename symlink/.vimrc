@@ -1,0 +1,1 @@
+so ~/.env/real/vimrc

@@ -1,17 +1,16 @@
 function silent_mkdir(){
     if [ ! -d $1 ]; then
-        mkdir $1
-        echo "$1 folder was created."
+        mkdir $1 && echo "$1 folder was created." || echo "$1 folder failed to be created."
     else
-        echo ".oldrc folder exists..."
+        echo ".oldrc backup usage folder already exists..."
 
     fi
 }
-function install_conf(){
+function place_forward_conf()
+{
+    echo "Forward the $HOME/$1 to $HOME/.env/real/${1#.}"
     mv $HOME/$1 $HOME/.oldrc/
-#    echo "$HOME/$1 was backed up to $HOME/.oldrc/$1"
-    echo "Installing $HOME/$1."
-    cp $HOME/.env/install/$1 $HOME/
+    cp $HOME/.env/symlink/$1 $HOME/
 }
 
 
@@ -20,19 +19,18 @@ after_env=".env"
 cd $HOME
 mv $before_env $after_env
 
-
 silent_mkdir $HOME/.oldrc
 echo "Old RC files will be backed up to $HOME/.oldrc before replaced new."
-install_conf .tmux.conf
-install_conf .vimrc
-install_conf .bashrc
+place_forward_conf .tmux.conf
+place_forward_conf .vimrc
+place_forward_conf .bashrc
 
+
+# Forward the $HOME/.vim to $HOME/.env/.vim via symbolic link
 if [ -d "$HOME/.vim" ]; then
     echo "Detected $HOME/.vim folder."
-elif [ -h "$HOME/.vim" ]; then
-    echo "Detected $HOME/.vim symbol link."
 else
     echo "Making a link($HOME/.vim) to $HOME/${after_env}/vim ."
-    ln -s "$HOME/${after_env}/vim" "$HOME/.vim"
+    mv $HOME/.vim $HOME/.oldrc/ && ln -s "$HOME/${after_env}/real/vim" "$HOME/.vim"
 fi
 
