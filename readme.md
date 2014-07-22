@@ -1,6 +1,7 @@
 *Install script*
     
-    $> bash install/install.sh
+    $> cd ~
+    $> sh install/install.sh
 
     It will do following things:
         1. Backup original rc files to $HOME/.oldrc(mkdir if not exists).
