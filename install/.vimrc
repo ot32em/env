@@ -1,1 +1,1 @@
-so ~/env/vimrc
+so ~/.env/vimrc

@@ -1,1 +1,1 @@
-source $HOME/env/bashrc
+source $HOME/.env/bashrc
